@@ -872,7 +872,7 @@
         </div>
         <div class="contact-info fade-up">
           <h3>Contact Information</h3>
-          <p>Have questions before reaching out? We're here to help. Reach us through any of the channels below.</p>
+          <p>Have questions? We're here to help. Reach us through any of the channels below.</p>
           <div class="contact-items">
             <div class="contact-item">
               <div class="contact-item-icon"><i class="fa-solid fa-envelope"></i></div>
@@ -928,7 +928,7 @@
         <a href="#">Cookie Policy</a>
         <a href="#">Sitemap</a>
       </div>
-      <div class="footer-copy">&copy; <span id="year"></span> Reasonable Tech. All rights reserved.</div>
+      <div class="footer-copy">&copy; <span id="year">2026</span> Reasonable Tech. All rights reserved.</div>
     </div>
   </footer>
 
@@ -975,14 +975,14 @@
     toggle.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
       toggle.classList.toggle('open', open);
-      toggle.setAttribute('aria-expanded', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
     // Close on link click
     navLinks.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         navLinks.classList.remove('open');
         toggle.classList.remove('open');
-        toggle.setAttribute('aria-expanded', false);
+        toggle.setAttribute('aria-expanded', 'false');
       });
     });
 
@@ -1019,7 +1019,7 @@
 
       const nameErr    = name.length < 2;
       const emailErr   = !validateEmail(email);
-      const phoneErr   = phone.length < 5;
+      const phoneErr   = phone.length > 0 && phone.length < 5;
       const messageErr = message.length < 10;
 
       setError('fg-name',    nameErr);
