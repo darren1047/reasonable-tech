@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reasonable Tech – All Software. Reasonable Price.</title>
+  <meta name="description" content="Reasonable Tech delivers enterprise-grade custom software, web &amp; mobile apps, cloud, AI/ML, UI/UX design, and DevOps at prices that make sense for every business." />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Reasonable Tech – All Software. Reasonable Price." />
+  <meta property="og:description" content="Enterprise-grade software solutions at prices that make sense for businesses of all sizes." />
+  <meta property="og:url" content="https://reasonabletech.io" />
+  <meta property="og:image" content="https://reasonabletech.io/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Reasonable Tech – All Software. Reasonable Price." />
+  <meta name="twitter:description" content="Enterprise-grade software solutions at prices that make sense for businesses of all sizes." />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* ─── CSS Variables ─────────────────────────────────────────── */
+    :root {
+      --primary:      #6667AB;
+      --primary-lt:   #8B8CC7;
+      --primary-dk:   #4A4B7A;
+      --primary-bg:   #F0F0FF;
+      --white:        #ffffff;
+      --text:         #1a1a2e;
+      --text-muted:   #555577;
+      --card-shadow:  0 4px 20px rgba(102, 103, 171, 0.12);
+      --radius:       14px;
+      --transition:   0.3s ease;
+    }
+
+    /* ─── Reset & Base ──────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; line-height: 1.25; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    ul { list-style: none; }
+
+    /* ─── Utilities ─────────────────────────────────────────────── */
+    .container { width: 90%; max-width: 1140px; margin: 0 auto; }
+    .section-label {
+      display: inline-block;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: .8rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: var(--primary-bg);
+      padding: .35rem .9rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: .75rem;
+    }
+    .section-subtitle {
+      color: var(--text-muted);
+      max-width: 560px;
+      font-size: 1.05rem;
+    }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-header .section-subtitle { margin: 0 auto; }
+
+    /* ─── Animations ────────────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── Buttons ───────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .8rem 2rem;
+      border-radius: 999px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-primary {
+      background: var(--white);
+      color: var(--primary);
+    }
+    .btn-primary:hover {
+      background: var(--primary-bg);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(102,103,171,.35);
+    }
+    .btn-solid {
+      background: var(--primary);
+      color: var(--white);
+    }
+    .btn-solid:hover {
+      background: var(--primary-dk);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(102,103,171,.35);
+    }
+
+    /* ─── Navigation ────────────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1.25rem 0;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+    #navbar.scrolled {
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 2px 20px rgba(102,103,171,.1);
+      padding: .75rem 0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: var(--white);
+      letter-spacing: .02em;
+      transition: color var(--transition);
+    }
+    .nav-logo span { color: var(--primary-lt); }
+    #navbar.scrolled .nav-logo { color: var(--primary); }
+    #navbar.scrolled .nav-logo span { color: var(--primary-lt); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: .95rem;
+      font-weight: 500;
+      color: rgba(255,255,255,.85);
+      position: relative;
+      transition: color var(--transition);
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 0; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: width var(--transition);
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--white); }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+
+    #navbar.scrolled .nav-links a { color: var(--text-muted); }
+    #navbar.scrolled .nav-links a::after { background: var(--primary); }
+    #navbar.scrolled .nav-links a:hover,
+    #navbar.scrolled .nav-links a.active { color: var(--primary); }
+
+    /* Hamburger */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform var(--transition), opacity var(--transition);
+    }
+    #navbar.scrolled .nav-toggle span { background: var(--primary); }
+    .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.open span:nth-child(2) { opacity: 0; }
+    .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: var(--white);
+        flex-direction: column;
+        gap: 0;
+        box-shadow: 0 8px 24px rgba(102,103,171,.15);
+        border-radius: 0 0 var(--radius) var(--radius);
+        padding: 1rem 0;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links a {
+        color: var(--text-muted) !important;
+        padding: .75rem 2rem;
+        width: 100%;
+      }
+      .nav-links a::after { bottom: 0; background: var(--primary) !important; }
+      .nav-links a:hover,
+      .nav-links a.active { color: var(--primary) !important; }
+      .nav-toggle { display: flex; }
+    }
+
+    /* ─── Hero ──────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-lt) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: rgba(255,255,255,.04);
+      border-radius: 50%;
+      top: -200px; right: -200px;
+    }
+    #hero::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      background: rgba(255,255,255,.04);
+      border-radius: 50%;
+      bottom: -150px; left: -150px;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 760px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255,255,255,.15);
+      color: var(--white);
+      padding: .4rem 1.1rem;
+      border-radius: 999px;
+      font-size: .85rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(6px);
+    }
+    .hero-title {
+      font-size: clamp(2.4rem, 7vw, 4.5rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+    .hero-tagline {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      color: rgba(255,255,255,.88);
+      margin-bottom: 2.5rem;
+      font-weight: 500;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-outline-white {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .8rem 2rem;
+      border-radius: 999px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      border: 2px solid rgba(255,255,255,.6);
+      background: transparent;
+      color: var(--white);
+      transition: background var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .btn-outline-white:hover {
+      background: rgba(255,255,255,.12);
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 3.5rem;
+      flex-wrap: wrap;
+    }
+    .hero-stat { color: var(--white); text-align: center; }
+    .hero-stat strong {
+      display: block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .hero-stat span { font-size: .9rem; color: rgba(255,255,255,.75); }
+
+    /* ─── Services ──────────────────────────────────────────────── */
+    #services { padding: 6rem 0; background: var(--white); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+    @media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .services-grid { grid-template-columns: 1fr; } }
+
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      box-shadow: var(--card-shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+      border: 1px solid rgba(102,103,171,.08);
+    }
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 36px rgba(102,103,171,.2);
+    }
+    .service-icon {
+      width: 56px; height: 56px;
+      border-radius: 14px;
+      background: var(--primary-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+      transition: background var(--transition), color var(--transition);
+    }
+    .service-card:hover .service-icon {
+      background: var(--primary);
+      color: var(--white);
+    }
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+      color: var(--text);
+    }
+    .service-card p { font-size: .95rem; color: var(--text-muted); }
+
+    /* ─── About ─────────────────────────────────────────────────── */
+    #about { padding: 6rem 0; background: var(--primary-bg); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; }
+      .about-visual { order: -1; }
+    }
+    .about-text .section-title { text-align: left; }
+    .about-text .section-label { margin-bottom: .75rem; }
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      font-size: 1.05rem;
+    }
+    .team-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      background: var(--white);
+      border-radius: 999px;
+      padding: .55rem 1.25rem;
+      box-shadow: var(--card-shadow);
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-top: .5rem;
+    }
+    .team-badge i { font-size: 1rem; }
+    .about-visual {
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-lt) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 1rem;
+      color: var(--white);
+      position: relative;
+    }
+    .about-visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .about-visual-icon {
+      font-size: 4rem;
+      opacity: .9;
+    }
+    .about-visual-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.2rem;
+      opacity: .9;
+    }
+
+    /* ─── Why Choose Us ─────────────────────────────────────────── */
+    #why { padding: 6rem 0; background: var(--white); }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    @media (max-width: 768px) { .why-grid { grid-template-columns: 1fr; } }
+    .why-card {
+      text-align: center;
+      padding: 2.5rem 2rem;
+      border-radius: var(--radius);
+      background: var(--primary-bg);
+      transition: background var(--transition), transform var(--transition);
+    }
+    .why-card:hover {
+      background: var(--primary);
+      transform: translateY(-4px);
+    }
+    .why-card:hover .why-icon,
+    .why-card:hover h3,
+    .why-card:hover p { color: var(--white); }
+    .why-icon {
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      transition: color var(--transition);
+    }
+    .why-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: .5rem;
+      color: var(--text);
+      transition: color var(--transition);
+    }
+    .why-card p {
+      font-size: .95rem;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+
+    /* ─── Testimonials ──────────────────────────────────────────── */
+    #testimonials { padding: 6rem 0; background: var(--primary-bg); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+    @media (max-width: 900px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .testimonials-grid { grid-template-columns: 1fr; } }
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--card-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(102,103,171,.2);
+    }
+    .stars { color: #f59e0b; font-size: 1rem; letter-spacing: .1em; }
+    .testimonial-quote {
+      font-size: .98rem;
+      color: var(--text-muted);
+      flex: 1;
+      line-height: 1.75;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: .85rem; }
+    .author-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-lt) 100%);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: .9rem;
+      flex-shrink: 0;
+    }
+    .author-info strong { display: block; font-size: .95rem; font-weight: 600; color: var(--text); }
+    .author-info span { font-size: .82rem; color: var(--text-muted); }
+
+    /* ─── Contact ───────────────────────────────────────────────── */
+    #contact { padding: 6rem 0; background: var(--white); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1.25rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: .4rem; }
+    .form-group label { font-size: .88rem; font-weight: 600; color: var(--text); }
+    .form-group input,
+    .form-group textarea {
+      padding: .8rem 1rem;
+      border: 1.5px solid rgba(102,103,171,.2);
+      border-radius: 10px;
+      font-family: 'Inter', sans-serif;
+      font-size: .97rem;
+      color: var(--text);
+      background: var(--white);
+      outline: none;
+      transition: border-color var(--transition), box-shadow var(--transition);
+      resize: none;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(102,103,171,.12);
+    }
+    .form-group .field-error {
+      font-size: .8rem;
+      color: #dc2626;
+      display: none;
+    }
+    .form-group.error input,
+    .form-group.error textarea { border-color: #dc2626; }
+    .form-group.error .field-error { display: block; }
+    .form-success {
+      display: none;
+      background: #f0fdf4;
+      border: 1.5px solid #86efac;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      color: #16a34a;
+      font-weight: 600;
+      font-size: .95rem;
+      align-items: center;
+      gap: .65rem;
+    }
+    .form-success.show { display: flex; }
+
+    .contact-info { padding-top: .5rem; }
+    .contact-info h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+    .contact-info p { color: var(--text-muted); margin-bottom: 2rem; font-size: 1rem; }
+    .contact-items { display: flex; flex-direction: column; gap: 1.25rem; }
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+    .contact-item-icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      background: var(--primary-bg);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary);
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-item-text strong { display: block; font-size: .92rem; font-weight: 600; color: var(--text); margin-bottom: .15rem; }
+    .contact-item-text span { font-size: .92rem; color: var(--text-muted); }
+
+    /* ─── Footer ────────────────────────────────────────────────── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,.65);
+      padding: 3rem 0 2rem;
+    }
+    .footer-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      text-align: center;
+    }
+    .footer-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      color: var(--white);
+    }
+    .footer-logo span { color: var(--primary-lt); }
+    .footer-tagline { font-size: .92rem; margin-top: .15rem; }
+    .footer-socials { display: flex; gap: 1rem; }
+    .footer-socials a {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255,255,255,.18);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,.65);
+      font-size: .95rem;
+      transition: background var(--transition), border-color var(--transition), color var(--transition), transform var(--transition);
+    }
+    .footer-socials a:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--white);
+      transform: translateY(-3px);
+    }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+    .footer-links a {
+      font-size: .88rem;
+      color: rgba(255,255,255,.55);
+      transition: color var(--transition);
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { font-size: .88rem; }
+    .footer-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,.1);
+    }
+
+    /* ─── Scroll to Top ─────────────────────────────────────────── */
+    #scrollTop {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 16px rgba(102,103,171,.4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition), transform var(--transition);
+      z-index: 900;
+    }
+    #scrollTop.show { opacity: 1; pointer-events: auto; }
+    #scrollTop:hover { transform: translateY(-3px); }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════ NAVBAR ════════════════════════════ -->
+  <nav id="navbar">
+    <div class="container nav-inner">
+      <a href="#hero" class="nav-logo">REASONABLE <span>TECH</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" class="active">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#testimonials">Testimonials</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ════════════════════════════ HERO ══════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-content fade-up">
+      <div class="hero-badge"><i class="fa-solid fa-bolt"></i> Trusted by 200+ businesses worldwide</div>
+      <h1 class="hero-title">REASONABLE TECH</h1>
+      <p class="hero-tagline">All Software. Reasonable Price.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-file-invoice"></i> Get a Free Quote</a>
+        <a href="#services" class="btn-outline-white"><i class="fa-solid fa-layer-group"></i> Our Services</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>200+</strong><span>Projects Delivered</span></div>
+        <div class="hero-stat"><strong>98%</strong><span>Client Satisfaction</span></div>
+        <div class="hero-stat"><strong>5+</strong><span>Years Experience</span></div>
+        <div class="hero-stat"><strong>50+</strong><span>Expert Engineers</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ SERVICES ══════════════════════════ -->
+  <section id="services">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-label">What We Build</span>
+        <h2 class="section-title">Comprehensive Software Services</h2>
+        <p class="section-subtitle">From concept to deployment, we handle every aspect of your software project with precision and care.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card fade-up">
+          <div class="service-icon"><i class="fa-solid fa-code"></i></div>
+          <h3>Custom Software Development</h3>
+          <p>Tailor-made software solutions built to your exact specifications, ensuring seamless integration with your existing workflows.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+          <h3>Web &amp; Mobile Apps</h3>
+          <p>Responsive web apps and native/cross-platform mobile applications that deliver outstanding user experiences on every device.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon"><i class="fa-solid fa-cloud"></i></div>
+          <h3>Cloud Solutions</h3>
+          <p>Scalable cloud architecture, migration services, and managed infrastructure on AWS, Azure, or GCP — cost-optimised for your needs.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon"><i class="fa-solid fa-brain"></i></div>
+          <h3>AI &amp; Machine Learning</h3>
+          <p>Intelligent automation, predictive analytics, and LLM integrations that give your business a competitive edge in the digital era.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+          <h3>UI/UX Design</h3>
+          <p>User-centric design systems and pixel-perfect interfaces that are as beautiful as they are intuitive to use.</p>
+        </div>
+        <div class="service-card fade-up">
+          <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
+          <h3>DevOps &amp; Maintenance</h3>
+          <p>CI/CD pipelines, infrastructure-as-code, monitoring, and ongoing maintenance so your software runs reliably 24/7.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ ABOUT ═════════════════════════════ -->
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text fade-up">
+          <span class="section-label">Our Story</span>
+          <h2 class="section-title">Software Excellence<br>Without the Premium Price Tag</h2>
+          <p>We believe great software shouldn't break the bank. We deliver enterprise-grade solutions at prices that make sense for businesses of all sizes — from early-stage startups to established enterprises.</p>
+          <p>Founded by engineers who grew frustrated with inflated agency quotes, Reasonable Tech was built on a simple principle: transparency, quality, and value. Every project is staffed with senior engineers who care deeply about the code they ship.</p>
+          <p>We're not just a vendor; we're a technology partner invested in your long-term success.</p>
+          <div class="team-badge"><i class="fa-solid fa-users"></i> 50+ engineers &amp; designers across 3 continents</div>
+        </div>
+        <div class="about-visual fade-up">
+          <div class="about-visual-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <div class="about-visual-text">Building the Future</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ WHY US ════════════════════════════ -->
+  <section id="why">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-label">Why Reasonable Tech</span>
+        <h2 class="section-title">The Smart Choice for Your Business</h2>
+        <p class="section-subtitle">We combine technical excellence with business acumen to deliver software that moves the needle.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card fade-up">
+          <div class="why-icon"><i class="fa-solid fa-tag"></i></div>
+          <h3>Affordable Pricing</h3>
+          <p>Transparent, fixed-price quotes with no hidden fees. We flex our rates to fit your budget without cutting corners on quality.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <h3>Quality Assured</h3>
+          <p>Rigorous code reviews, automated testing, and a dedicated QA team ensure every release meets the highest standards.</p>
+        </div>
+        <div class="why-card fade-up">
+          <div class="why-icon"><i class="fa-solid fa-clock"></i></div>
+          <h3>On-Time Delivery</h3>
+          <p>We use agile sprints and transparent project tracking so you always know where your project stands — and it ships on schedule.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ TESTIMONIALS ══════════════════════ -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-label">Client Stories</span>
+        <h2 class="section-title">What Our Clients Say</h2>
+        <p class="section-subtitle">Real feedback from real clients who trusted us to build their most important software.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-up">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-quote">"Reasonable Tech delivered our entire e-commerce platform in just 8 weeks — on time and under budget. The code quality was exceptional and the team was a pleasure to work with. We've already signed up for a second project."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SC</div>
+            <div class="author-info"><strong>Sarah Chen</strong><span>CEO, NovaMart Retail</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-quote">"We shopped around for months and every other agency quoted us 3× more for the same scope. Reasonable Tech not only beat the price, they actually delivered more features. Genuinely incredible value."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MR</div>
+            <div class="author-info"><strong>Marcus Reid</strong><span>CTO, FinScope Analytics</span></div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up">
+          <div class="stars">★★★★★</div>
+          <p class="testimonial-quote">"Their AI/ML team built a demand-forecasting model that reduced our inventory waste by 34% in the first quarter. The ROI speaks for itself. We now consider Reasonable Tech an extension of our internal team."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">AP</div>
+            <div class="author-info"><strong>Aisha Patel</strong><span>VP Operations, LogiFlow Inc.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ CONTACT ═══════════════════════════ -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-header fade-up">
+        <span class="section-label">Let's Talk</span>
+        <h2 class="section-title">Get a Free Quote Today</h2>
+        <p class="section-subtitle">Tell us about your project and we'll get back to you within one business day with a no-obligation estimate.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="fade-up">
+          <form class="contact-form" id="contactForm" novalidate>
+            <div class="form-row">
+              <div class="form-group" id="fg-name">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Jane Smith" />
+                <span class="field-error">Please enter your full name.</span>
+              </div>
+              <div class="form-group" id="fg-email">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="jane@company.com" />
+                <span class="field-error">Please enter a valid email address.</span>
+              </div>
+            </div>
+            <div class="form-group" id="fg-phone">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" />
+              <span class="field-error">Please enter your phone number.</span>
+            </div>
+            <div class="form-group" id="fg-message">
+              <label for="message">Project Details</label>
+              <textarea id="message" name="message" rows="5" placeholder="Tell us about your project, budget range, and timeline…"></textarea>
+              <span class="field-error">Please describe your project.</span>
+            </div>
+            <button type="submit" class="btn btn-solid"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+            <div class="form-success" id="formSuccess"><i class="fa-solid fa-circle-check"></i> Thank you! We'll be in touch within one business day.</div>
+          </form>
+        </div>
+        <div class="contact-info fade-up">
+          <h3>Contact Information</h3>
+          <p>Have questions before reaching out? We're here to help. Reach us through any of the channels below.</p>
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div class="contact-item-text">
+                <strong>Email Us</strong>
+                <span>hello@reasonabletech.io</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fa-solid fa-phone"></i></div>
+              <div class="contact-item-text">
+                <strong>Call Us</strong>
+                <span>+1 (888) 732-8936</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="contact-item-text">
+                <strong>Headquarters</strong>
+                <span>340 Tech Park Drive, Suite 800<br>San Francisco, CA 94105</span>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fa-solid fa-clock"></i></div>
+              <div class="contact-item-text">
+                <strong>Business Hours</strong>
+                <span>Mon–Fri, 9 AM – 6 PM PST</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════ FOOTER ════════════════════════════ -->
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <div class="footer-logo">REASONABLE <span>TECH</span></div>
+        <div class="footer-tagline">All Software. Reasonable Price.</div>
+      </div>
+      <div class="footer-socials">
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+        <a href="#">Sitemap</a>
+      </div>
+      <div class="footer-copy">&copy; <span id="year"></span> Reasonable Tech. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Scroll-to-top button -->
+  <button id="scrollTop" aria-label="Scroll to top"><i class="fa-solid fa-chevron-up"></i></button>
+
+  <script>
+    /* ── Dynamic year ──────────────────────────────────────────────── */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* ── Navbar scroll behaviour ───────────────────────────────────── */
+    const navbar = document.getElementById('navbar');
+    function onScroll() {
+      if (window.scrollY > 60) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+
+      // Scroll-to-top visibility
+      const btn = document.getElementById('scrollTop');
+      if (window.scrollY > 400) {
+        btn.classList.add('show');
+      } else {
+        btn.classList.remove('show');
+      }
+
+      // Active nav link highlighting
+      const sections = ['hero', 'services', 'about', 'why', 'testimonials', 'contact'];
+      let current = 'hero';
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 100) current = id;
+      });
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    /* ── Hamburger menu ────────────────────────────────────────────── */
+    const toggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      toggle.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open);
+    });
+    // Close on link click
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', false);
+      });
+    });
+
+    /* ── Scroll-to-top button ──────────────────────────────────────── */
+    document.getElementById('scrollTop').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ── Fade-up on scroll (Intersection Observer) ─────────────────── */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    /* ── Contact form validation ───────────────────────────────────── */
+    const form = document.getElementById('contactForm');
+    function validateEmail(v) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+    }
+    function setError(groupId, show) {
+      document.getElementById(groupId).classList.toggle('error', show);
+    }
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const name    = document.getElementById('name').value.trim();
+      const email   = document.getElementById('email').value.trim();
+      const phone   = document.getElementById('phone').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      const nameErr    = name.length < 2;
+      const emailErr   = !validateEmail(email);
+      const phoneErr   = phone.length < 5;
+      const messageErr = message.length < 10;
+
+      setError('fg-name',    nameErr);
+      setError('fg-email',   emailErr);
+      setError('fg-phone',   phoneErr);
+      setError('fg-message', messageErr);
+
+      if (!nameErr && !emailErr && !phoneErr && !messageErr) {
+        form.reset();
+        const success = document.getElementById('formSuccess');
+        success.classList.add('show');
+        setTimeout(() => success.classList.remove('show'), 6000);
+      }
+    });
+    // Clear error on input
+    ['name','email','phone','message'].forEach(id => {
+      document.getElementById(id).addEventListener('input', () => {
+        document.getElementById('fg-' + id).classList.remove('error');
+      });
+    });
+  </script>
+</body>
+</html>
