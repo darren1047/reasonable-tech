@@ -1,0 +1,29 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#5B47A8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B7FD9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Left arc (upper-left to bottom-left) -->
+  <path d="M 55 128 A 73 73 0 0 1 128 201" stroke="url(#purpleGrad)" stroke-width="28" fill="none" stroke-linecap="round"/>
+
+  <!-- Right arc (top-right to bottom-right) -->
+  <path d="M 201 55 A 73 73 0 0 1 201 201" stroke="url(#purpleGrad)" stroke-width="28" fill="none" stroke-linecap="round"/>
+
+  <!-- Diagonal stripe (telescope tube) -->
+  <polygon points="90,75 150,135 165,120 105,60" fill="url(#purpleGrad)"/>
+
+  <!-- Top-right sphere -->
+  <circle cx="201" cy="55" r="28" fill="url(#purpleGrad)"/>
+
+  <!-- Dark left wedge -->
+  <path d="M 128 128 L 85 180 L 128 210 Z" fill="#4A3A7F"/>
+
+  <!-- Light center wedge -->
+  <path d="M 128 128 L 128 210 L 170 185 Z" fill="#7B6BC8"/>
+
+  <!-- Light right section -->
+  <path d="M 128 128 L 170 185 L 195 145 L 165 115 Z" fill="#9B89D9"/>
+</svg>
